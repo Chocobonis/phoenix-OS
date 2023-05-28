@@ -1,0 +1,25 @@
+/*
+THIS IS THE CONFIGURATION FILE FOR THE
+OPERATIVE SYSTEM KERNEL
+*/
+
+#define _RTOS_SHELL_ENABLED_ // IF HAS SHELL ENABLED (DISABLED GIVES EXTRA CORE AND USES USER INTERFACE)
+#define _RTOS_SYSMD_ENABLED_ // IF SYSTEMD IS ENABLED, SOME SERVICES OR SCRIPTS MAY START AUTOMATICALLY
+#define _RTOS_EMU_MT_THREAD_ // IF ENABLED IR WILL TRY TO EMYLATE MULTITHREADING ON A SINGLE CORE
+// --------------------------------------
+String wifi_ssid = "";         // THE SSID OF THE CURRENT NETWORK CONNECTED  -- USED FOR WEB HACKING
+String wifi_pass = "";         // THE PASSWORD OF THE CURRENT NETWORK CONNECTED
+// ---------------------------------------
+#define _RTOS_SUCCESS_ 0       // IF SOMETHING WAS SUCCESSFUL RETURNS 0
+#define _RTOS_FAILURE_ -1      // IF CODE WAS NOT SUCCESSFUL RETURNS -1 ERROR CODE
+// the only use of this is to make code readable
+// ---------------------------------------
+bool _DEBUG_MODE_ = true;
+// ---------------------------------------
+#if CONFIG_FREERTOS_UNICORE
+    #define ARDUINO_RUNNING_CORE 0 // IF THERE IS ONLY 1 CORE AVAILABLE
+#else
+    #define ARDUINO_RUNNING_CORE 1 // THIS IS FOR MULTIPLE THREADS
+#endif
+// ----------------------------------------
+#define WDT_TIMEOUT 3 // ENABLE WATCHDOG TO ANALYZE POSSIBLE DAMAGE 
